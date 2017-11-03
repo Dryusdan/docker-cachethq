@@ -3,8 +3,8 @@ pipeline:
     image: plugins/docker
     repo: registry.dryusdan.fr/dryusdan/cachethq
     registry: registry.dryusdan.fr
-    username: $PRIVATE_LOGIN
-    password: $PRIVATE_PASSWORD
+    username: $$PRIVATE_LOGIN
+    password: $$PRIVATE_PASSWORD
     action: build
     tags: 
       - latest
