@@ -1,12 +1,12 @@
 pipeline:
   build:
-  image: alpine:3.2
-  commands:
-    - apk --update add docker
-    - "export DOCKER_HOST=unix:///var/run/host.sock"
-    - echo $$PRIVATE_PASSWORD
-    - docker login -u Dryusdan -p $$PRIVATE_PASSWORD registry.dryusdan.fr
-    - docker build -t registry.dryusdan.fr/dryusdan/cachethq .
-    - docker push registry.dryusdan.fr/dryusdan/cachethq
-  volumes:
-    - /var/run/docker.sock:/var/run/host.sock:ro
+    image: alpine:3.6
+    commands:
+      - apk --update add docker
+      - "export DOCKER_HOST=unix:///var/run/host.sock"
+      - echo $$PRIVATE_PASSWORD
+      - docker login -u Dryusdan -p $$PRIVATE_PASSWORD registry.dryusdan.fr
+      - docker build -t registry.dryusdan.fr/dryusdan/cachethq .
+      - docker push registry.dryusdan.fr/dryusdan/cachethq
+    volumes:
+      - /var/run/docker.sock:/var/run/host.sock:ro
