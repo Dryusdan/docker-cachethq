@@ -1,18 +1,13 @@
 pipeline:
   build:
     image: plugins/docker
-    repo: registry.dryusdan.fr/dryusdan/cachethqx
-    action: build
-    tags: 
-      - latest
-
-  push:
-    image: xataz/docker-drone-plugin
     repo: registry.dryusdan.fr/dryusdan/cachethq
     registry: registry.dryusdan.fr
     username: $PRIVATE_LOGIN
     password: $PRIVATE_PASSWORD
-    action: push
+    action: build
+    tags: 
+      - latest
     when:
       branch: master
       event: [push, tag, deployment]
