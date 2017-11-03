@@ -18,7 +18,6 @@ pipeline:
       - "export DOCKER_HOST=unix:///var/run/host.sock"
       - docker images
       - docker login -u `cat /docker/.docker/username`  -p `cat /docker/.docker/password` registry.dryusdan.fr
-      - docker build -t registry.dryusdan.fr/dryusdan/cachethq .
       - docker push registry.dryusdan.fr/dryusdan/cachethq
     volumes:
       - /var/run/docker.sock:/var/run/host.sock:ro
