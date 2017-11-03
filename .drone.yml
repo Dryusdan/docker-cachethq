@@ -4,9 +4,10 @@ pipeline:
     commands:
       - apk --update add docker
       - "export DOCKER_HOST=unix:///var/run/host.sock"
-      - echo $$PRIVATE_PASSWORD
+      - cat /docker/.docker/config.json
       - docker login -u Dryusdan -p $PRIVATE_PASSWORD registry.dryusdan.fr
       - docker build -t registry.dryusdan.fr/dryusdan/cachethq .
       - docker push registry.dryusdan.fr/dryusdan/cachethq
     volumes:
       - /var/run/docker.sock:/var/run/host.sock:ro
+      - /docker/.docker/config.json:/docker/.docker/config.json
