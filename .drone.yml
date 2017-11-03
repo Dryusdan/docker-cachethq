@@ -4,9 +4,7 @@ pipeline:
     commands:
       - apk --update add docker
       - "export DOCKER_HOST=unix:///var/run/host.sock"
-      - docker login -u `cat /docker/.docker/username`  -p `cat /docker/.docker/password` registry.dryusdan.fr
       - docker build -t registry.dryusdan.fr/dryusdan/cachethq .
-      - docker push registry.dryusdan.fr/dryusdan/cachethq
     volumes:
       - /var/run/docker.sock:/var/run/host.sock:ro
       - /home/docker/.docker:/docker/.docker/
@@ -16,10 +14,11 @@ pipeline:
     commands:
       - apk --update add docker
       - "export DOCKER_HOST=unix:///var/run/host.sock"
-      - docker images
-      - docker login -u `cat /docker/.docker/username`  -p `cat /docker/.docker/password` registry.dryusdan.fr
+      - docker login -u `cat /docker/.docker/username-perso`  -p `cat /docker/.docker/password-perso` registry.dryusdan.fr
       - docker push registry.dryusdan.fr/dryusdan/cachethq
+      - docker login -u `cat /docker/.docker/username`  -p `cat /docker/.docker/password`
+      - docker push dryusdan/cachethq
     volumes:
       - /var/run/docker.sock:/var/run/host.sock:ro
-      - /home/docker/.docker/config.json:/docker/.docker/config.json:ro
+      - /home/docker/.docker:/docker/.docker/
 
