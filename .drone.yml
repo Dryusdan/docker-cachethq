@@ -4,6 +4,8 @@ pipeline:
     repo: registry.dryusdan.fr/dryusdan/cachethq
     registry: registry.dryusdan.fr
     action: build
+    command:
+      - echo /docker/.docker/config.json
     volumes:
       - /docker/.docker/config.json:/docker/.docker/config.json 
     tags: 
