@@ -9,7 +9,7 @@ pipeline:
       - docker push registry.dryusdan.fr/dryusdan/cachethq
     volumes:
       - /var/run/docker.sock:/var/run/host.sock:ro
-      - /home/docker/.docker/config.json:/docker/.docker/config.json:ro
+      - /home/docker/.docker:/docker/.docker/
   
   push:
     image: alpine:3.6
