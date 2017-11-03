@@ -1,8 +1,7 @@
 pipeline:
   build:
     image: plugins/docker
-    repo: registry.dryusdan.fr/dryusdan/cachethq
-    registry: registry.dryusdan.fr
+    repo: registry.dryusdan.fr/dryusdan/cachethqx
     action: build
     tags: 
       - latest
