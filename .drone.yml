@@ -10,4 +10,4 @@ pipeline:
       - docker push registry.dryusdan.fr/dryusdan/cachethq
     volumes:
       - /var/run/docker.sock:/var/run/host.sock:ro
-      - /home/docker/.docker/config.json:/docker/.docker/config.json
+      - /home/docker/.docker/config.json:/docker/.docker/config.json:ro
