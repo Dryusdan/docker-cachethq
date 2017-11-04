@@ -4,9 +4,6 @@ pipeline:
     commands:
       - apk --update add docker
       - "export DOCKER_HOST=unix:///var/run/host.sock"
-      - echo ${DOCKER_USERNAME}
-      - echo ${REGISTRY_USERNAME}
-      - echo ${DOCKER_USERNAME}
       - docker build -t registry.dryusdan.fr/dryusdan/cachethq .
     volumes:
       - /var/run/docker.sock:/var/run/host.sock:ro
@@ -17,6 +14,7 @@ pipeline:
     commands:
       - apk --update add docker
       - "export DOCKER_HOST=unix:///var/run/host.sock"
+      -  secrets: [ DOCKER_USERNAME, DOCKER_PASSWORD ]
       - docker push registry.dryusdan.fr/dryusdan/cachethq
       - docker push dryusdan/cachethq
     volumes:
