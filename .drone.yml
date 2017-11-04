@@ -4,6 +4,9 @@ pipeline:
     commands:
       - apk --update add docker
       - "export DOCKER_HOST=unix:///var/run/host.sock"
+      - echo $DOCKER_USERNAME
+      - echo $REGISTRY_USERNAME
+      - ECHO $$DOCKER_USERNAME
       - docker build -t registry.dryusdan.fr/dryusdan/cachethq .
     volumes:
       - /var/run/docker.sock:/var/run/host.sock:ro
