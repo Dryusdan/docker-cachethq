@@ -9,8 +9,7 @@ pipeline:
       - /var/run/docker.sock:/var/run/host.sock:ro
   
   push_own_registry:
-    image: plugins/docker
-    repo: registry.dryusdan.fr/dryusdan/cachethq
-    secrets: [ dryusdan_registry_login, dryusdan_registry_password ]
-    registry: registry.dryusdan.fr
+    image: alpine:3.6
+    commands:
+      - drone secrets add
 
