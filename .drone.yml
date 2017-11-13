@@ -1,16 +1,12 @@
 pipeline:
   build:
-    image: alpine:3.6
-    commands:
-      - apk --update add docker
-      - "export DOCKER_HOST=unix:///var/run/host.sock"
-      - docker build -t registry.dryusdan.fr/dryusdan/cachethq .
-    volumes:
-      - /var/run/docker.sock:/var/run/host.sock:ro
-  
-  push_own_registry:
     image: plugins/docker
     registry: registry.dryusdan.fr
     repo: registry.dryusdan.fr/dryusdan/cachethq
     secrets: [ docker_username, docker_password ]
 
+  push:
+    image: appleboy/drone-git-push
+    branch: master
+    remote: git@github.com:Dryusdan/docker-cachethq.git
+    secrets: [ key ]
