@@ -9,4 +9,4 @@ pipeline:
     image: appleboy/drone-git-push
     branch: master
     remote: git@github.com:Dryusdan/docker-cachethq.git
-    secrets: [ key ]
+    secrets: [ git_push_ssh_key ]
