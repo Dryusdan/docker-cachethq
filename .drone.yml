@@ -14,9 +14,11 @@ pipeline:
     commands:
       - apk --update add docker
       - "export DOCKER_HOST=unix:///var/run/host.sock"
+      - echo $dryusdan_registry_login
       - docker push registry.dryusdan.fr/dryusdan/cachethq
       - docker push dryusdan/cachethq
     volumes:
       - /var/run/docker.sock:/var/run/host.sock:ro
       - /home/docker/.docker:/docker/.docker/
+
 
