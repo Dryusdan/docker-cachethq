@@ -7,18 +7,10 @@ pipeline:
       - docker build -t registry.dryusdan.fr/dryusdan/cachethq .
     volumes:
       - /var/run/docker.sock:/var/run/host.sock:ro
-      - /home/docker/.docker:/docker/.docker/
   
-  push:
-    image: alpine:3.6
-    commands:
-      - apk --update add docker
-      - "export DOCKER_HOST=unix:///var/run/host.sock"
-      - echo $DRYUSDAN_REGISTRY_LOGIN
-      - docker push registry.dryusdan.fr/dryusdan/cachethq
-      - docker push dryusdan/cachethq
-    volumes:
-      - /var/run/docker.sock:/var/run/host.sock:ro
-      - /home/docker/.docker:/docker/.docker/
+  push_own_registry:
+    image: plugins/docker
+    repo: registry.dryusdan.fr/dryusdan/cachethq
+    secrets: [ dryusdan_registry_login, dryusdan_registry_password ]
 
 
