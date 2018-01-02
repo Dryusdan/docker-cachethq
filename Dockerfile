@@ -1,5 +1,6 @@
 FROM xataz/nginx-php
 
+ARG CACHET_VER=2.3.13
 ENV UID=991 GID=991
 
 
@@ -25,11 +26,11 @@ RUN export BUILD_DEPS="build-base \
     && docker-php-ext-enable apcu \
     && apk del .phpize-deps-configure ${BUILD_DEPS} \
     && apk -U add git curl mariadb-client \
-    && git clone --branch v2.3.13 https://github.com/CachetHQ/Cachet.git /cachetHQ 
+    && git clone --branch v${CACHET_VER} https://github.com/CachetHQ/Cachet.git /cachetHQ 
 COPY rootfs /
 WORKDIR cachetHQ
 RUN chmod +x /usr/local/bin/startup \
-        && mv env .env \
+    && mv env .env \
 	&& curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
 	&& composer install --no-dev \
  	&& apk del git curl \
