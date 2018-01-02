@@ -2,6 +2,27 @@
 
 addgroup -g ${GID} web && adduser -H -s /bin/sh -D -G web -u ${UID} web
 
+sed -i -e "s|{$APP_ENV}|<APP_ENV>|" \
+       -e "s|{$APP_DEBUG}|<APP_DEBUG>|" \
+       -e "s|{$APP_URL}|<APP_URL>|" \
+       -e "s|{$APP_KEY}|<APP_KEY>|" \
+       -e "s|{$DB_DRIVER}|<DB_DRIVER>|" \
+       -e "s|{$DB_HOST}|<DB_HOST>|" \
+       -e "s|{$DB_DATABASE}|<DB_DATABASE>|" \
+       -e "s|{$DB_USERNAME}|<DB_USERNAME>|" \
+       -e "s|{$DB_PASSWORD}|<DB_PASSWORD>|" \
+       -e "s|{$DB_PORT}|<DB_PORT>|" \
+       -e "s|{$DB_PREFIX}|<DB_PREFIX>|" \
+       -e "s|{$CACHET_EMOJI}|<CACHET_EMOJI>|" \
+       -e "s|{$MAIL_DRIVER}|<MAIL_DRIVER>|" \
+       -e "s|{$MAIL_HOST}|<MAIL_HOST>|" \
+       -e "s|{$MAIL_PORT}|<MAIL_PORT>|" \
+       -e "s|{$MAIL_USERNAME}|<MAIL_USERNAME>|" \
+       -e "s|{$MAIL_PASSWORD}|<MAIL_PASSWORD>|" \
+       -e "s|{$MAIL_ADDRESS}|<MAIL_ADDRESS>|" \
+       -e "s|{$MAIL_NAME}|<MAIL_NAME>|" \
+       -e "s|{$MAIL_ENCRYPTION}|<MAIL_ENCRYPTION>|" /cachetHQ/.env
+
 mkdir -p /nginx /php
 
 php artisan app:install	
