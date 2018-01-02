@@ -5,7 +5,7 @@ pipeline:
     build_args: PHP_VER=7.1.12
     tags:
       - 7.1
-    dockerfile: php/Dockerfile
+    dockerfile: docker-nginx-php/Dockerfile
     repo: registry.dryusdan.fr/dryusdan/php
     secrets: [ docker_username, docker_password ]
 
