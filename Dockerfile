@@ -1,4 +1,4 @@
-FROM xataz/nginx-php
+FROM registry.dryusdan.fr/dryusdan/php:7.1
 
 ARG CACHET_VER=2.3.13
 ENV UID=991 GID=991
