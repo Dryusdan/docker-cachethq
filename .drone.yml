@@ -1,14 +1,4 @@
 pipeline:
-  buildphp:
-    image: plugins/docker
-    registry: registry.dryusdan.fr
-    build_args: PHP_VER=7.1.12
-    tags:
-      - 7.1
-    dockerfile: docker-nginx-php/Dockerfile
-    repo: registry.dryusdan.fr/dryusdan/php
-    secrets: [ docker_username, docker_password ]
-
   build:
     image: plugins/docker
     registry: registry.dryusdan.fr
